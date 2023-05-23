@@ -1,0 +1,17 @@
+- name: Create Config File
+  ansible.builtin.template:
+    src: job.xml
+    dest: /tmp/job.xml
+
+
+- name: Create
+  community.general.jenkins_jobs:
+  config: "{{ lookup('file', 'templates/test.xml' ) }}"
+  name: test
+  url: http://172.31.2.12//
+  user: admin
+  password: {{ jenkins_password}}
+  loop:
+    - frontend
+    - cart
+    - catalogue
