@@ -1,6 +1,6 @@
 - name: Create Config file
   ansible.builtin.template:
-    src: s-job.xml
+    src: m-job.xml
     dest: /tmp/m-job.xml
   vars:
      unique_key: lookup('community.general.random_string', spacial=false, upper=false, length=12)
