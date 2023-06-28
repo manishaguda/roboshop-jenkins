@@ -5,6 +5,7 @@ ci_pipeline_jobs:
   - {name: "payment", dir: "CIPipelines"}
   - {name: "user", dir: "CIPipelines"}
   - {name: "shipping", dir: "CIPipelines"}
+  - {name: "dispatch", dir: "CIPipelines"}
 
 folders:
   - CIPipelines
