@@ -1,10 +1,15 @@
+- name: Check if job exist or not -  {{item.dir}}/{{item.name}}
+  ansible.builtin.shell:
+  register: out
+  ignore_errors: yes
+
 - name: Create Config file
   ansible.builtin.template:
     src: m-job.xml
     dest: /tmp/m-job.xml
   vars:
      unique_key: lookup('community.general.random_string', spacial=false, upper=false, length=12)
-
+  when: out.rc == 3
 
 - name: Create Job
   community.general.jenkins_job:
@@ -13,5 +18,6 @@
     url: http://172.31.2.12:8080
     user: admin
     password: "{{jenkins_password}}"
+    when: out.rc == 3
 
 

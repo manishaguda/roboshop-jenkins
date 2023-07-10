@@ -1,7 +1,13 @@
+- name: Check if job exist or not -  {{item.dir}}/{{item.name}}
+  ansible.builtin.shell:
+  register: out
+  ignore_errors: yes
+
 - name: Create Config file
   ansible.builtin.template:
     src: s-job.xml
     dest: /tmp/s-job.xml
+  when: out.rc == 3
 
 
 - name: Create Job
@@ -11,5 +17,5 @@
     url: http://172.31.2.12:8080
     user: admin
     password: "{{jenkins_password}}"
-
+  when: out.rc == 3
 
