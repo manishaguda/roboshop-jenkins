@@ -11,7 +11,7 @@
      unique_key: lookup('community.general.random_string', spacial=false, upper=false, length=12)
   when: out.rc == 3
 
-- name: Create Job
+- name: Create Job {{item.dir}}/{{item.name}}
   community.general.jenkins_job:
     config: "{{ lookup('file', '/tmp/m-job.xml') }}"
     name: "{{item.dir}}/{{item.name}}"
