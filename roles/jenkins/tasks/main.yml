@@ -9,10 +9,10 @@
 
 
 - name: Include Multi Branch Pipeline Jobs File
-  ansible.builtin.include_task: mbranch-pipeline.yml
+  ansible.builtin.include_tasks: mbranch-pipeline.yml
   loop: "{{ ci_pipeline_jobs }}"
 
 - name: Include Single Pipeline Jobs File
-  ansible.builtin.include_task: sbranch-pipeline.yml
+  ansible.builtin.include_tasks: sbranch-pipeline.yml
   loop: "{{ sbranch_pipeline_jobs }}"
 
