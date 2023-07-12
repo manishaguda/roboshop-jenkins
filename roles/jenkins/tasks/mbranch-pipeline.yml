@@ -12,7 +12,7 @@
   when: out.rc == 3
 
 - name: Create Job {{item.dir}}/{{item.name}}
-  community.general.jenkins_job:
+  community.general.jenkins_jobs:
     config: "{{ lookup('file', '/tmp/m-job.xml') }}"
     name: "{{item.dir}}/{{item.name}}"
     url: http://172.31.2.12:8080
