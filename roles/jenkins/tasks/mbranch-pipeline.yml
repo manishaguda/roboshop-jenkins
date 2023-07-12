@@ -5,6 +5,7 @@
     password: "{{jenkins_password}}"
     name: "{{item.dir}}/{{item.name}}"
   register: out
+  ignore_errors: yes
 
 #- name: Check if job exist or not -  {{item.dir}}/{{item.name}}
 #  ansible.builtin.shell: java -jar /opt/jenkins-cli.jar -auth admin:{{jenkins_password}} -s http://172.31.2.12:8080/ -webSocket get-job {{item.dir}}/{{item.name}}
