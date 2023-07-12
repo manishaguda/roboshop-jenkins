@@ -1,5 +1,5 @@
 - name: Create Folder
-  community.general.jenkins_jobs:
+  community.general.jenkins_job:
     config: "{{ lookup('file', 'templates/folder.xml') }}"
     name: "{{item}}"
     url: http://172.31.2.12:8080
@@ -9,10 +9,10 @@
 
 
 - name: Include Multi Branch Pipeline Jobs File
-  ansible.builtin.include_tasks: mbranch-pipeline.yml
+  ansible.builtin.include_task: mbranch-pipeline.yml
   loop: "{{ ci_pipeline_jobs }}"
 
 - name: Include Single Pipeline Jobs File
-  ansible.builtin.include_tasks: sbranch-pipeline.yml
+  ansible.builtin.include_task: sbranch-pipeline.yml
   loop: "{{ sbranch_pipeline_jobs }}"
 
